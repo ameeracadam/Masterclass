@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  rstudio:
+    environment:
+      - USER=rstudio
+      - PASSWORD=qwerty
+    image: rocker/rstudio
+    ports:
+     - 8787:8787
