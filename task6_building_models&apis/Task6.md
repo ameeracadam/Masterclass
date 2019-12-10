@@ -83,3 +83,52 @@
 -   You will be directed to a page that returns the string in reverse (e.g. !dlroW olleH)
 -   To send another query, click on the BACK botton of the Browser and enter in a new string
 -   To exit out of the Flask App, return to the Terminal the App id running in and CTRL+C
+****
+##  Task 6B
+### Set up a Docker container for Postgres
+We will use the same container in **Task 5**
+
+### Set up a Docker container for PostgREST
+For Windows:
+-   Navigate to the [PostgREST Downloads page](https://github.com/PostgREST/postgrest/releases/tag/v6.0.2)
+-   Select **postgrest-v6.0.2-windows-x64.zip** and **Save**
+-   Navigate to the downloaded folder and extract out **postgrest.exe**
+-   Test **postgrest.exe** in the Terminal by `cd` to folder and typing in the following command line:
+    `./postgrest.exe`
+The output should print out the PostgREST version number
+
+For Mac:
+-   In a Terminal, run the following command line:
+    `tar xfJ postgrest-v6.0.2-osx.tar.xz`
+The output will be a **postgrest.exe** file
+-   Test out **postgrest.exe** in the Terminal by `cd` to folder and typing in the following command line:
+    `./postgrest.exe`
+The output should print out the PostgREST version number
+
+### Show how the API can be queried to list the first 10 rows of a table
+-   We will use Postman for our API testing. Download Postman from this [link](https://www.getpostman.com/downloads/)
+-   Launch the Postman setup and install Postman on your local machine
+-   To query rows from the API, launch the Docker container. In a Terminal, type in the following command line:
+    `docker container start [TASK5A_CONTAINER_NAME]`
+-   Create a .conf file for PostgREST. Navigate to the folder containing **postgrest.exe** and create a nee .conf file
+-   Open the .conf file in a code editor and type in the following:
+    ```
+    db-uri = "postgres://authenticator:mysecretpassword@localhost:54320/postgres"
+    db-schema = "public"
+    db-anon-role = "web_anon"
+    ```
+-   Save the .conf file and run PostgREST. In a Terminal, `cd` to the location of the .conf file and type in the following command line:
+    `./postgrest.exe [FILE_NAME].conf`
+The output should be:
+    ```
+    Listening on port 3000
+    Attempting to connect to the database...
+    Connection successful
+    ```
+-   The container is hosted on port 3000. You can open [localhost](localhost:3000) in your browser
+-   Launch Postman and Create a New Request. 
+-   Since we want to query the first 10 rows of a table, select `GET` under the request and under `Enter Request URL`, type in the following:
+    `localhost:3000/actor?limit=10`
+In this case, we are requesting the first 10 roes of the table ACTOR
+
+
