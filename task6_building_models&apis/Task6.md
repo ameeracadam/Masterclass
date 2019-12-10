@@ -7,18 +7,18 @@
     ```
     # Argument parser
     import argparse
-    
+
     parser = argparse.ArgumentParser()
     # Include argyment to accept string of characters
     parser.add_argument("--text", type = str)
     args = parser.parse_args()
-    
+
     text = args.text
     processed_text = ""
     #reverse string of characters
     for i in text:
         processed_text = i + processed_text
-    
+
     #prints reversed string
     print(processed_text)
     ```
@@ -26,7 +26,7 @@
     `python [FILE_NAME].py --text "Hello World!"`
 -   The output will be **!dlroW olleH**
 
-### Package the function into a Flask app that accepts user-imput characters
+### Package the function into a Flask app that accepts user-input characters
 ####    Create a HTML template for the app
 -   In the same directory, create a new folder named **templates** and `cd` into the folder
 -   Create a new HTML file and open in a code editor
@@ -44,11 +44,11 @@
     # Import Flask Python web framework
     from flask import Flask, request, render_template
     app = Flask(__name__)
-    
+
     @app.route('/')
     def my_form():
         return render_template('form.html')
-    
+
     @app.route('/', methods=['POST'])
     def my_form_post():
     # Takes in input from user
@@ -59,7 +59,7 @@
                 processed_text = i + processed_text
                 # Returns reversed sequence
             return processed_text
-    
+
     if __name__ == '__main__':
         app.run()
     ```
@@ -125,10 +125,8 @@ The output should be:
     Attempting to connect to the database...
     Connection successful
     ```
--   The container is hosted on port 3000. You can open [localhost](localhost:3000) in your browser
--   Launch Postman and Create a New Request. 
+-   The container is hosted on port 3000. You can open [localhost:3000](localhost:3000) in your browser
+-   Launch Postman and Create a New Request.
 -   Since we want to query the first 10 rows of a table, select `GET` under the request and under `Enter Request URL`, type in the following:
     `localhost:3000/actor?limit=10`
 In this case, we are requesting the first 10 roes of the table ACTOR
-
-
