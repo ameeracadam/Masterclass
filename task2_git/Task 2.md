@@ -22,7 +22,8 @@ You can add any file to the repository folder in your machine. For instance, you
 ## 5. Commit the changes
 Before commiting to the repository, you need to stage the files that you've added to your local machine. In your terminal, `cd` into the repository folder in your local machine and type in the following command line:
 
-`git add .`
+`git add .` Stages the commit for all files in folder <br />
+`git add '[file_name]'` To commit just one file
 
 This adds the file to your local machine and stages the commit.
 To unstage a file, type in `git reset HEAD [File_Name]`
