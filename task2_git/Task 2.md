@@ -12,7 +12,7 @@ Click on the 'Create New Repository' button. You will need to enter in a mandato
 From the repo that was created, obtain the HTTP line
 In the Terminal, type in the following command line:
 
-`git clone [HTTPS_from_Github]`
+`git clone [HTTP_from_Github]`
 
 The repo will be cloned to your machine in a folder with the same title as the repo.
 
@@ -38,5 +38,6 @@ This commits the tracked changes and prepares them to be pushed to a remote repo
 To push your commits to your repo on Github, type in the following command line in your Terminal:
 
 `git push origin [your_branch_name]`
+To push to master branch:  `git push origin master`
 
 This pushes the changes made in your local repository to a remote repository you specified as the origin.
