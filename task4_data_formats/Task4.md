@@ -82,6 +82,23 @@
                         f.write(xml)
     ```
 
+
+****
+##  Task4B
+### Given the data in a CSV, write a bash shell script, uisng regular expressions to replace the ID with "XXXXX". You mar assume IDs have 6-7 digits with an optional letter.
+-   Create a Shell Script and open it in a code editor
+-   Enter the following in your script:
+    ```
+    #!/bin/bash
+    awk '{gsub(/^([a-z0-9]{6,7})/, "xxxxx", $NF);}1' generatedData_4b.csv > replaced_4b.csv
+    awk -F, '{gsub(/^([a-z0-9]{6,7})/, "xxxxx", $4);}1' replaced_4b.csv > replaced.csv
+    ```
+-   Save your file and run in Terminal using the following command line:
+    `bash [FILE_NAME].sh [CSV_FILE].csv`
+-   The output will be a CSV file titled **replaced.csv**
+
+****
+
 ### Bonus: Populating a CSV file with fake data
 You can create your own CSV file and populate it with randomly faked data in Python. 
 -   Create a new Python script and open it in a code editor
@@ -155,17 +172,3 @@ You can create your own CSV file and populate it with randomly faked data in Pyt
     `python [FILE_NAME].py [NUMBER_OF_ROWS]`
 -   The output will be a CSV file titled **generatedData.csv**. You can use this file to run Task4A.
 -   The script can be edited to include faked mesages to run Task4B.
-
-****
-##  Task4B
-### Given the data in a CSV, write a bash shell script, uisng regular expressions to replace the ID with "XXXXX". You mar assume IDs have 6-7 digits with an optional letter.
--   Create a Shell Script and open it in a code editor
--   Enter the following in your script:
-    ```
-    #!/bin/bash
-    awk '{gsub(/^([a-z0-9]{6,7})/, "xxxxx", $NF);}1' generatedData_4b.csv > replaced_4b.csv
-    awk -F, '{gsub(/^([a-z0-9]{6,7})/, "xxxxx", $4);}1' replaced_4b.csv > replaced.csv
-    ```
--   Save your file and run in Terminal using the following command line:
-    `bash [FILE_NAME].sh [CSV_FILE].csv`
--   The output will be a CSV file titled **replaced.csv**
