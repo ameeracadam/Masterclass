@@ -58,16 +58,18 @@ For Mac:
 ### 1. Set up a docker-compose file for the image in Task 3B
 -   In a Terminal, create a new file called `docker-compose.yml`
     For Windows: `New-Item docker-compose.yml` <br />
-    For Mac: `touch docker-compose.yml`
+    For Mac and Ununtu VM: `touch docker-compose.yml`
 -   Open `docker-compose.yml` in your favourite text editor and type in the following:
     ```
     #Build image with version 3.7
     version: '3.7'
     services:
+        #Uses RStudio as a service
         rstudio:
             environment:
+                #Environment Variables (username, password)
                 - USER=rstudio
-                - PASSWORD=qwerty #Set the password to any password you prefer
+                - PASSWORD=<your_password_here>
             image: rocker/rstudio
             ports:
                 - 8787:8787
