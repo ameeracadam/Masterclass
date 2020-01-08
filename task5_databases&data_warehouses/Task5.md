@@ -15,7 +15,7 @@
 ### 3. Run the SQL scripts to create a database and insert rows
 -   `cd` to the folder you've copied the schema and indert-data SQL files
 -   Start the Postgres container using the `docker run` command
-    `docker run --rm [CONTAINER_NAME] -d -p 54320:4532 -v /var/lib/postgresql/data  postgres`
+    `docker run --rm [CONTAINER_NAME] -d -p 54320:5432 -v /var/lib/postgresql/data  postgres`
 -   Create a database in the container
     ```    
     docker exec -it [CONTAINER_NAME] psql -U postgres
@@ -29,6 +29,53 @@
 -   Execute the SQL files in the container. Execute the schema first then populate with data.
     Execute the schema SQL: `docker exec -it [CONTAINER_NAME] psql -U postgres -a db -f /postgres-sakila-schema.sql` <br />
     Execute the data SQL:`docker exec -it [CONTAINER_NAME] psql -U postgres -a db -f /postgres-sakila-insert-data.sql`
+
+-   Check that you have properly populated the schema with the insert-data
+    ```
+    docker exec -it [CONTAINER_NAME] psql -U postgres
+    \c dt   #connect to database db
+    \dt     #List tables in database
+    ```    
+    The output  should be:
+    ```
+                 List of relations
+     Schema |       Name       | Type  |  Owner
+    --------+------------------+-------+----------
+     public | actor            | table | postgres
+     public | address          | table | postgres
+     public | category         | table | postgres
+     public | city             | table | postgres
+     public | country          | table | postgres
+     public | customer         | table | postgres
+     public | film             | table | postgres
+     public | film_actor       | table | postgres
+     public | film_category    | table | postgres
+     public | inventory        | table | postgres
+     public | language         | table | postgres
+    ```
+
+    Check one table in the database:
+    ```
+    SELECT * FROM actor;
+    ```
+    The output should be:
+    ```
+    actor_id | first_name  |  last_name   |     last_update     
+    ----------+-------------+--------------+---------------------
+            1 | PENELOPE    | GUINESS      | 2006-02-15 04:34:33
+            2 | NICK        | WAHLBERG     | 2006-02-15 04:34:33
+            3 | ED          | CHASE        | 2006-02-15 04:34:33
+            4 | JENNIFER    | DAVIS        | 2006-02-15 04:34:33
+            5 | JOHNNY      | LOLLOBRIGIDA | 2006-02-15 04:34:33
+            6 | BETTE       | NICHOLSON    | 2006-02-15 04:34:33
+            7 | GRACE       | MOSTEL       | 2006-02-15 04:34:33
+            8 | MATTHEW     | JOHANSSON    | 2006-02-15 04:34:33
+            9 | JOE         | SWANK        | 2006-02-15 04:34:33
+           10 | CHRISTIAN   | GABLE        | 2006-02-15 04:34:33
+           11 | ZERO        | CAGE         | 2006-02-15 04:34:33
+           12 | KARL        | BERRY        | 2006-02-15 04:34:33
+    ```
+
 
 ****
 ##  Task 5B
