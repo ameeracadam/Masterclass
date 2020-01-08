@@ -18,6 +18,7 @@ Docker is an open platform for building, shipping and running distributed applic
 ****
 ##  Task 3B
 ### 1. Install Docker on your local machine
+##### Docker is already installed on the Virtual Machine
 For Windows:
 - Click on this [link](https://docs.docker.com/v17.09/docker-for-windows/install/#download-docker-for-windows). Select on **Get Docker for Windoes (Stable)**. This is the Windows installer for Docker Desktop (Windows).
 - Navigate to your **Downloads** directory (or whichever directory you've downloaded the installer into). Double-click `Docker Desktop Installer.exe`
@@ -28,7 +29,7 @@ For Windows:
 For Mac:
 -   Click on this [link](https://docs.docker.com/v17.09/docker-for-mac/install/). Select on **Get Docker for Mac (Stable)**. This is the installer for Docker Desktop (Mac)
 -   Navigate to the directory you've installed Docker in. Double click on `Docker.dmg` to open the installer. Drag the whale to the Applications folder.
--   Doucle ckick `Docker.app` in Applications to start Docker.
+-   Doucle click `Docker.app` in Applications to start Docker.
 -   You will be asked to authorise Docker with your system password after launching it. Privileged access is needed to install networking components and links to Docker apps.
 -   The whale in the status bar will indicate that Docker is running and accessible from a terminal.
 
@@ -40,22 +41,23 @@ For Mac:
 -   Type in the following in your Terminal:
        `docker run --rm -p 8787:8787 -e PASSWORD=yourpasswordhere rocker/rstudio`
 -   `docker run`    processes images in isolated containers
--   `--rm`  Clean up. Docker automatically cleans up the container and removes the file system when the contaienr exits
+-   `--rm`  Clean up. Docker automatically cleans up the container and removes the file system when the container exits
 -   `-p 8787:8787` publishes exposed ports to host interfaces
--   `-e`Environment variable. You can set the PASSWORD as any password that you prefer
+-   `-e` Environment variable. You can set the PASSWORD as any password that you prefer
 
 ### 4. Access the application from your browser.
 -   In your browser, navigate to [localhost:8787](localhost:8787).
 -   Log in with the username `rstudio` and type in the password you've set.
 -   You can now access the rocker/rstudio image
 -   To end the session, `Ctrl+C` into the Terminal.
--   To stop and remove the container type in `docker ps -a` into the Termianl to list out all containers. Under the `CONTAINER_ID` column, select the container ID of the rocker/rstudio container.
+-   To stop and remove the container type in `docker ps -a` into the Terminal to list out all containers. Under the `CONTAINER_ID` column, select the container ID of the rocker/rstudio container.
 -   In the Terminal, type in `docker container stop CONTAINER_ID` to stop and remove the rocker/rstudio container from your machine.
+-   Since we've added the `--rm` flag when building the container, Docker will automatically remove the container once it is stopped. You can check through `docker ps -a` just to be sure. 
 ****
 ##  Task 3C
 ### 1. Set up a docker-compose file for the image in Task 3B
 -   In a Terminal, create a new file called `docker-compose.yml`
-    For Windows: `New-Item docker-compose.yml` >br />
+    For Windows: `New-Item docker-compose.yml` <br />
     For Mac: `touch docker-compose.yml`
 -   Open `docker-compose.yml` in your favourite text editor and type in the following:
     ```
