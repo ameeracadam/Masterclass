@@ -79,7 +79,7 @@
 ```
 
 -   Open browser and enter [localhost:5000](localhost:5000)
--   Enter a string of characters in the query box (e.g Hello World!) and click on **Submir Query** or press ENTER
+-   Enter a string of characters in the query box (e.g Hello World!) and click on **Submit Query** or press ENTER
 -   You will be directed to a page that returns the string in reverse (e.g. !dlroW olleH)
 -   To send another query, click on the BACK botton of the Browser and enter in a new string
 -   To exit out of the Flask App, return to the Terminal the App id running in and CTRL+C
@@ -89,6 +89,7 @@
 We will use the same container in **Task 5**
 
 ### Set up a Docker container for PostgREST
+#####    If you are using the virtual machine, PostgREST has already been set up for you.
 For Windows:
 -   Navigate to the [PostgREST Downloads page](https://github.com/PostgREST/postgrest/releases/tag/v6.0.2)
 -   Select **postgrest-v6.0.2-windows-x64.zip** and **Save**
@@ -98,6 +99,8 @@ For Windows:
 The output should print out the PostgREST version number
 
 For Mac:
+-   Navigate to the [PostgREST Downloads page](https://github.com/PostgREST/postgrest/releases/tag/v6.0.2)
+-   Select **postgrest-v6.0.2-osx.tar.xz** and **Save**
 -   In a Terminal, run the following command line:
     `tar xfJ postgrest-v6.0.2-osx.tar.xz`
 The output will be a **postgrest.exe** file
@@ -105,15 +108,34 @@ The output will be a **postgrest.exe** file
     `./postgrest.exe`
 The output should print out the PostgREST version number
 
+### Create roles for anonymous web requests
+- When making a request, PostgREST will switch to a created role in the database to run queries. Thus, we will need to create a role in the database.
+- Start the docker container and launch psql:
+    `docker exec -it [CONTAINER_NAME] psql -U postgres`
+- Create a user **web_anon** and grant rights to it:
+    ```
+    CREATE ROLE web_anon nologin;
+    GRANT CONNECT ON DATABASE db TO web_anon;
+    GRANT USAGE ON SCHEMA public TO web_anon;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO web_anon;
+    ```
+- You can create a user **authenticator** with a password and assign the same rights as web_anon:
+    ```
+    CREATE ROLE authenticator noinherit PASSWORD 'mysecretpassword';
+    GRANT web_anon TO authenticator;
+    ```
+- `\q` to quit PostgreSQL
+    
 ### Show how the API can be queried to list the first 10 rows of a table
 -   We will use Postman for our API testing. Download Postman from this [link](https://www.getpostman.com/downloads/)
+-   **Postman has been downloaded into the Virtual Machine**
 -   Launch the Postman setup and install Postman on your local machine
 -   To query rows from the API, launch the Docker container. In a Terminal, type in the following command line:
-    `docker container start [TASK5A_CONTAINER_NAME]`
--   Create a .conf file for PostgREST. Navigate to the folder containing **postgrest.exe** and create a nee .conf file
+    `docker container start [CONTAINER_NAME]`
+-   Create a .conf file for PostgREST. Navigate to the folder containing **postgrest.exe** and create a new .conf file
 -   Open the .conf file in a code editor and type in the following:
     ```
-    db-uri = "postgres://authenticator:mysecretpassword@localhost:54320/postgres"
+    db-uri = "postgres://authenticator:mysecretpassword@localhost:54320/db"
     db-schema = "public"
     db-anon-role = "web_anon"
     ```
