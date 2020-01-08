@@ -3,7 +3,7 @@ Write a short series of shell commands in a single line, to list out the process
 
 ##  Create a bash shell
 In Windows: `New-Item [name_of_script].sh` <br />
-In Mac: `touch [name_of_script].sh`
+In Mac and Ubuntu VM: `touch [name_of_script].sh` <br />
 
 ##  Type in the following lines:
 `#!/bin/bash/`
