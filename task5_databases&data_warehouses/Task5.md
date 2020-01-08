@@ -15,7 +15,7 @@
 ### 3. Run the SQL scripts to create a database and insert rows
 -   `cd` to the folder you've copied the schema and indert-data SQL files
 -   Start the Postgres container using the `docker run` command
-    `docker run --rm [CONTAINER_NAME] -d -p 54320:5432 -v /var/lib/postgresql/data  postgres`
+    `docker run --rm --name [CONTAINER_NAME] -d -p 54320:5432 -v /var/lib/postgresql/data  postgres`
 -   Create a database in the container
     ```    
     docker exec -it [CONTAINER_NAME] psql -U postgres
