@@ -8,8 +8,8 @@ In Mac: `touch [name_of_script].sh`
 ##  Type in the following lines:
 `#!/bin/bash/`
 Type in she-bang. Tells the program to interpret the script with when executed
-Execute in BASH
 
+## Execute in BASH
 `ps axco pid,command,user | grep root`
 
 `ps axco pid`   to list processes by process ID (PID) <br />
