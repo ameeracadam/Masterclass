@@ -1,9 +1,14 @@
+#Specify version number
 version: '3.7'
 services:
+  #Specify service
   rstudio:
     environment:
+      #Specify environment variables
       - USER=rstudio
-      - PASSWORD=qwerty
+      - PASSWORD=<your_password_here>
+    #Image to use
     image: rocker/rstudio
+    #Ports to open
     ports:
      - 8787:8787
