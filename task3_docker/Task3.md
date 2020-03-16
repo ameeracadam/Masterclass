@@ -18,20 +18,7 @@ Docker is an open platform for building, shipping and running distributed applic
 ****
 ##  Task 3B
 ### 1. Install Docker on your local machine
-##### Docker is already installed on the Virtual Machine
-For Windows:
-- Click on this [link](https://docs.docker.com/v17.09/docker-for-windows/install/#download-docker-for-windows). Select on **Get Docker for Windoes (Stable)**. This is the Windows installer for Docker Desktop (Windows).
-- Navigate to your **Downloads** directory (or whichever directory you've downloaded the installer into). Double-click `Docker Desktop Installer.exe`
-- Follow the Install Wizard to accept the license, authorise the installer, and proceed with the install.
-- Click **Finish** on the setup complete dialog to launch Docker.
-- To start Docker, search for **Docker** in the Start Bar and click on the results. When the whale in the status bar, Docker is ready to be accessed from any terminal window.
-
-For Mac:
--   Click on this [link](https://docs.docker.com/v17.09/docker-for-mac/install/). Select on **Get Docker for Mac (Stable)**. This is the installer for Docker Desktop (Mac)
--   Navigate to the directory you've installed Docker in. Double click on `Docker.dmg` to open the installer. Drag the whale to the Applications folder.
--   Doucle click `Docker.app` in Applications to start Docker.
--   You will be asked to authorise Docker with your system password after launching it. Privileged access is needed to install networking components and links to Docker apps.
--   The whale in the status bar will indicate that Docker is running and accessible from a terminal.
+#### Docker is already installed on the Virtual Machine
 
 ### 2. Pull the rocker/rstudio image to your local machine
 -   Navigate to the [rocker/rstudio](https://hub.docker.com/r/rocker/rstudio/) page on DockerHub.
@@ -82,3 +69,20 @@ For Mac:
 -   Access the container through [localhost:8787](localhost:8787)
 -   To end the session `Ctrl+C` into the Terminal
 -   To stop the container `docker-compose down` in the Terminal
+
+****
+## Annex
+### Setting up Docker on your own machine
+For Windows:
+- Click on this [link](https://docs.docker.com/v17.09/docker-for-windows/install/#download-docker-for-windows). Select on **Get Docker for Windoes (Stable)**. This is the Windows installer for Docker Desktop (Windows).
+- Navigate to your **Downloads** directory (or whichever directory you've downloaded the installer into). Double-click `Docker Desktop Installer.exe`
+- Follow the Install Wizard to accept the license, authorise the installer, and proceed with the install.
+- Click **Finish** on the setup complete dialog to launch Docker.
+- To start Docker, search for **Docker** in the Start Bar and click on the results. When the whale in the status bar, Docker is ready to be accessed from any terminal window.
+
+For Mac:
+-   Click on this [link](https://docs.docker.com/v17.09/docker-for-mac/install/). Select on **Get Docker for Mac (Stable)**. This is the installer for Docker Desktop (Mac)
+-   Navigate to the directory you've installed Docker in. Double click on `Docker.dmg` to open the installer. Drag the whale to the Applications folder.
+-   Doucle click `Docker.app` in Applications to start Docker.
+-   You will be asked to authorise Docker with your system password after launching it. Privileged access is needed to install networking components and links to Docker apps.
+-   The whale in the status bar will indicate that Docker is running and accessible from a terminal.
