@@ -1,7 +1,7 @@
 #   Task 1
 Write a short series of shell commands in a single line, to list out the processes that belong to "root" and print out the PID , owner and name of process
 
-##  Create a bash shell
+##  Create a bash script
 In Windows: `New-Item [name_of_script].sh` <br />
 In Mac and Ubuntu VM: `touch [name_of_script].sh` <br />
 
